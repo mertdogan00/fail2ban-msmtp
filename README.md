@@ -32,16 +32,22 @@ This repository focuses on configuring **Fail2ban** to work with **msmtp** for s
 
 ## 🛠 Installation
 Install msmtp and Fail2ban:
+
+```
 sudo apt update
 sudo apt install msmtp msmtp-mta fail2ban -y
+```
 
 ---
 
 ## ✉ msmtp Configuration
 Open msmtp configuration file:
+```
 sudo nano /etc/msmtprc
+```
 
 Example configuration:
+```
 defaults
 auth on
 tls on
@@ -54,19 +60,26 @@ from yourmail@domain.com
 user yourmail@domain.com
 password your_smtp_password
 logfile /var/log/msmtp.log
+```
+
+
 
 ### ✅ Important Notes:
 - The `from` and `user` addresses must usually be the same for most SMTP servers.
 - The password should be an application-specific password if required.
 
 Test your email:
+```
 echo -e "Subject: Fail2ban Test Mail\n\nThis is a test email from msmtp." | msmtp yourmail@domain.com
+```
 
 ---
 
 ## ⚙ Fail2ban Mail Setup
 Open Fail2ban configuration file:
+```
 sudo nano /etc/fail2ban/jail.local
+```
 ```
 Example configuration:
 [DEFAULT]
